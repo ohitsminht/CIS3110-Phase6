@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="navBar.css">
+    <link rel="stylesheet" href="go.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Products</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="https://s3-us-west-2.amazonaws.com/joshcis311/Phase6/HomePage.html">Cars</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase6/product.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://s3.us-east-2.amazonaws.com/cis311fall2018/Careers.html">Careers</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Information
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/cis311juarezgrover/group/AboutUs.html">About Us</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/cis311juarezgrover/group/PrivacyPolicy.html">Privacy Policy</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase6/FAQ.html">FAQ</a>
+                        <a class="dropdown-item" href="https://s3.us-east-2.amazonaws.com/cis311fall2018/ContactUs.html">Contact Us</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/joshcis311/Phase6/AboutUs.html">Terms of Use</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/cis311juarezgrover/group/Events.html">Events</a>
+                        <a class="dropdown-item" href="#">Sponsors</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="https://s3.us-east-2.amazonaws.com/cis311fall2018/SignUp.html"><i class="fas fa-user"></i> Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://s3-us-west-2.amazonaws.com/joshcis311/Phase6/LoginPage.html"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <h2>Products</h2>
+    <div class="row" id="grid"></div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"> </script>
+    <script>
+        var images = ["AirLift.jpg", "GripRoyal.jpg", "BCRacing.jpg", "VS-SS.jpg", "BrideLowMax.jpg", "SFSwanNeck.jpg"]; //your urls
+
+        var caption = ["Air Lift Performance 3P", "Grip Royal Steering Wheel", "BC Racing BR Coilovers", "Work VS-SS", "Bride Low Max Gias II", "Street Faction Universal Swan Neck"];
+
+        var price = ["$1,675.00", "$180.00", "$995.00", "$2090.00", "$2270.00", "$900.00"];
+
+        var desc = ["Air Lift Performance 3P is the result of three years of development and testing. It is the most advanced product we have ever created. Air Lift Performance 3P combines pressure-based control with the ability to add ride-height sensing technology with the upgrade to height sensors. While both types of air management have been utilized before, this is the first product to harness the benefits of both sytems instantly improving suspension control, performance, and vehicle ride flexibility.",
+            "Grip Royal has been a leading manufacturer within the after market industry. Wrapped in perforated leather, it is to be expect that their steering wheels not only look good but also perform. This is a universal fit wheel that can attach to a majority of top steering hub manufacturing brands. Whether you're trying to cruise on the street or race down the track, this is the steering wheel for you.",
+            "The BR Series Model is the perfect choice for street driving and the occasional road course or autocross duty. With easily accessible adjustment knobs for fine-tuning compression and rebound, ride height adjustment independent of shock stroke and spring preload, having a performance coilover system has never been easier. The driver chooses how low or high the vehicle sits (no preset ride height here!) and a BC Racing patented concave lower locking ring keeps it locked securely in place. Most systems can be upgraded to pillowball mounts to proved the most feedback possible from the suspension and to sharpen steering response. BC Racing front camber plates also allow a driver to get the perfect alignment setup without compromise. Each of these features is offered, while providing a strong, attractive coilover system at a reasonable price.",
+            "Discontinued iconic wheels from the Japanese legends Work Wheels. Custom build three piece by VR Wheels with powderdoated gloss faces and full polish lips. These wheels speak for themselves on their quality.",
+            "A reclining sport seat which has both lightness and high holdability as well as abundant color variations. GIAS II is a reclining sport seat which achieves the same rigidity and holdability as a fixed bucket seat for high knee support, and it uses a full monocoque shell structure for its backrest. Reclining sport seats tend to be heavier, but in the GIAS II model which uses a carbon aramid shell, we have reduced the weight to the 11kg range by making the basic frame and reclining device out of aluminum.",
+            "Street Faction is proud to introduce their Universal Swan GT Wing! Now there is an alternative to thier Universal GT Wing and Chassis Mount Wing for those who are interested in a modern style. They designed these to be as universal as possible, which means they should fit virtually any trunk. However, some modifications may be required for some applications."
+        ];
+        //console.log(images);
+        var url; //assign later, make scope global to script
+        var urlOfDetailPage;
+
+
+        var url0;
+        var url1;
+        var url2;
+        var url3;
+        var url4;
+        var url5;
+
+        for (var i = 0; i < images.length; i++) //establish for, 6 items, last index place is 5, if you recall
+        {
+            console.log("Image shown is " + images[i]);
+            url = "https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase6/" + images[i];
+            urlOfDetailPage = "productDetail.html?" + "img=" + url + "&" + "caption=" + caption[i] + "&" + "price=" + price[i] + "&" + "desc=" + desc[i];
+
+            var grid = document.getElementById("grid");
+            var column = document.createElement("div"); //make a div
+            column.setAttribute("class", "column shadow p-1 mb-5 rounded");
+            var imgDiv = document.createElement("div");
+            imgDiv.setAttribute("class", "imgDiv");
+
+            var holder = document.createElement("div");
+            holder.setAttribute("class", "holder");
+
+            var showPrice = price[i];
+            var node = document.createTextNode(showPrice);
+
+            var hprice = document.createElement("h3");
+            hprice.setAttribute("class", "price");
+            hprice.appendChild(node);
+            imgDiv.appendChild(hprice);
+
+
+            var showCaption = caption[i];
+            var node = document.createTextNode(showCaption);
+
+            var hCaption = document.createElement("a");
+            hCaption.setAttribute("href", urlOfDetailPage)
+            hCaption.appendChild(node);
+            imgDiv.appendChild(hCaption);
+
+            var imgInDiv = document.createElement("img");
+            imgInDiv.setAttribute("class", "pctImg"); //fit to div
+            imgInDiv.setAttribute("id", "img" + i);
+            imgInDiv.setAttribute("src", url); //src to url, above, determined by for i
+
+            var link = document.createElement("a");
+            link.setAttribute("href", urlOfDetailPage); // so you'll navigate to the url
+            link.setAttribute("id", "a" + i);
+            link.appendChild(imgInDiv); //make the image the link
+            imgDiv.appendChild(link);
+/*
+            var favButton = document.createElement("button");
+            favButton.setAttribute("type", "button");
+            favButton.setAttribute("class", "buttons");
+            favButton.setAttribute("id", "btnFav" + i);
+            var favNode = document.createTextNode("Favorite");
+            favButton.appendChild(favNode);
+
+            var unfavButton = document.createElement("button");
+            unfavButton.setAttribute("type", "button");
+            unfavButton.setAttribute("class", "buttons");
+            unfavButton.setAttribute("id", "btnUnfav" + i);
+            var unfavNode = document.createTextNode("Unfavorite");
+            unfavButton.appendChild(unfavNode);*/
+
+            column.appendChild(imgDiv);
+            imgDiv.appendChild(hprice);
+            imgDiv.appendChild(hCaption);
+            //column.appendChild(favButton);
+            //column.appendChild(unfavButton);
+            holder.appendChild(column);
+            grid.appendChild(holder);
+
+
+            //document.body.appendChild(column);//then appd to body, document.body.appendChild  
+        }
+
+        $(document).ready(function() {
+
+
+            $("#btnFav0").click(function() {
+                $("#btnFav0").hide();
+                btnFav0.parentNode.appendChild(heart);
+                cookieUrl = document.getElementById("img0").src;
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                url0 = document.getElementById("a0").href;
+                var urlOfDetailPageFav = url0 + "&fav=on";
+                console.log("url of fav detail page = " + urlOfDetailPageFav);
+                $('#a0').attr("href", urlOfDetailPageFav);
+            });
+
+            $("#btnUnfav0").click(function() {
+                $("#btnFav0").show();
+                heart.remove(heart);
+                cookieUrl = "";
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                $('#a0').attr("href", url0);
+            });
+
+            $("#btnFav1").click(function() {
+                $("#btnFav1").hide();
+                btnFav1.parentNode.appendChild(heart);
+                cookieUrl = document.getElementById("img1").src;
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                url1 = document.getElementById("a1").href;
+                var urlOfDetailPageFav = url1 + "&fav=on";
+                console.log("url of fav detail page = " + urlOfDetailPageFav);
+                $('#a1').attr("href", urlOfDetailPageFav);
+            });
+
+            $("#btnUnfav1").click(function() {
+                $("#btnFav1").show();
+                heart.remove(heart);
+                cookieUrl = "";
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                $('#a1').attr("href", url1);
+            });
+
+            $("#btnFav2").click(function() {
+                $("#btnFav2").hide();
+                btnFav2.parentNode.appendChild(heart);
+                cookieUrl = document.getElementById("img2").src;
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                url2 = document.getElementById("a2").href;
+                var urlOfDetailPageFav = url2 + "&fav=on";
+                console.log("url of fav detail page = " + urlOfDetailPageFav);
+                $('#a2').attr("href", urlOfDetailPageFav);
+            });
+
+            $("#btnUnfav2").click(function() {
+                $("#btnFav2").show();
+                heart.remove(heart);
+                cookieUrl = "";
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                $('#a2').attr("href", url2);
+            });
+
+            $("#btnFav3").click(function() {
+                $("#btnFav3").hide();
+                btnFav3.parentNode.appendChild(heart);
+                cookieUrl = document.getElementById("img3").src;
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                url3 = document.getElementById("a3").href;
+                var urlOfDetailPageFav = url3 + "&fav=on";
+                console.log("url of fav detail page = " + urlOfDetailPageFav);
+                $('#a3').attr("href", urlOfDetailPageFav);
+            });
+
+            $("#btnUnfav3").click(function() {
+                $("#btnFav3").show();
+                heart.remove(heart);
+                cookieUrl = "";
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                $('#a3').attr("href", url3);
+            });
+
+            $("#btnFav4").click(function() {
+                $("#btnFav4").hide();
+                btnFav4.parentNode.appendChild(heart);
+                cookieUrl = document.getElementById("img4").src;
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                url4 = document.getElementById("a4").href;
+                var urlOfDetailPageFav = url4 + "&fav=on";
+                console.log("url of fav detail page = " + urlOfDetailPageFav);
+                $('#a4').attr("href", urlOfDetailPageFav);
+            });
+
+            $("#btnUnfav4").click(function() {
+                $("#btnFav4").show();
+                heart.remove(heart);
+                cookieUrl = "";
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                $('#a4').attr("href", url4);
+            });
+
+            $("#btnFav5").click(function() {
+                $("#btnFav5").hide();
+                btnFav5.parentNode.appendChild(heart);
+                cookieUrl = document.getElementById("img5").src;
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                url5 = document.getElementById("a5").href;
+                var urlOfDetailPageFav = url5 + "&fav=on";
+                console.log("url of fav detail page = " + urlOfDetailPageFav);
+                $('#a5').attr("href", urlOfDetailPageFav);
+            });
+
+            $("#btnUnfav5").click(function() {
+                $("#btnFav5").show();
+                heart.remove(heart);
+                cookieUrl = "";
+                setCookie("url", cookieUrl, 30);
+                console.log("cookie url = " + cookieUrl);
+                $('#a5').attr("href", url5);
+            });
+        });
+
+        function setCookie(cname, cvalue, exdays) {
+
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            //console.log("expires in " + expires);
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+            console.log("cookie is " + document.cookie);
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            var c = document.cookie;
+            console.log("cookie checker is " + c);
+            if (c != "") {
+                if (c == "url=https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase3/1.jpg") {
+                    var btn = document.getElementById("btnFav0");
+                    $("#btnFav0").hide();
+                    btnFav0.parentNode.appendChild(heart);
+                    url0 = document.getElementById("a0").href;
+                    var urlOfDetailPageFav = url0 + "&fav=on";
+                    $('#a0').attr("href", urlOfDetailPageFav);
+                } else if (c == "url=https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase3/2.jpg") {
+                    var btn = document.getElementById("btnFav1");
+                    $("#btnFav1").hide();
+                    btnFav1.parentNode.appendChild(heart);
+                    url1 = document.getElementById("a1").href;
+                    var urlOfDetailPageFav = url1 + "&fav=on";
+                    $('#a1').attr("href", urlOfDetailPageFav);
+                } else if (c == "url=https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase3/3.jpg") {
+                    var btn = document.getElementById("btnFav2");
+                    $("#btnFav2").hide();
+                    btnFav2.parentNode.appendChild(heart);
+                    url2 = document.getElementById("a2").href;
+                    var urlOfDetailPageFav = url2 + "&fav=on";
+                    $('#a2').attr("href", urlOfDetailPageFav);
+                } else if (c == "url=https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase3/4.jpg") {
+                    var btn = document.getElementById("btnFav3");
+                    $("#btnFav3").hide();
+                    btnFav3.parentNode.appendChild(heart);
+                    url3 = document.getElementById("a3").href;
+                    var urlOfDetailPageFav = url3 + "&fav=on";
+                    $('#a3').attr("href", urlOfDetailPageFav);
+                } else if (c == "url=https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase3/5.jpg") {
+                    var btn = document.getElementById("btnFav0");
+                    $("#btnFav4").hide();
+                    btnFav4.parentNode.appendChild(heart);
+                    url4 = document.getElementById("a4").href;
+                    var urlOfDetailPageFav = url4 + "&fav=on";
+                    $('#a4').attr("href", urlOfDetailPageFav);
+                } else if (c == "url=https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase3/6.jpg") {
+                    var btn = document.getElementById("btnFav5");
+                    $("#btnFav5").hide();
+                    btnFav5.parentNode.appendChild(heart);
+                    url5 = document.getElementById("a5").href;
+                    var urlOfDetailPageFav = url5 + "&fav=on";
+                    $('#a5').attr("href", urlOfDetailPageFav);
+                }
+            }
+        }
+
+        // Get the elements with class="column"
+        var elements = document.getElementsByClassName("column");
+
+        // Declare a loop variable
+        var i;
+
+        // Full-width images
+        function one() {
+            for (i = 0; i < elements.length; i++) {
+                elements[i].style.msFlex = "100%"; // IE10
+                elements[i].style.flex = "100%";
+            }
+        }
+
+        // Two images side by side
+        function two() {
+            for (i = 0; i < elements.length; i++) {
+                elements[i].style.msFlex = "50%"; // IE10
+                elements[i].style.flex = "50%";
+            }
+        }
+
+        // Three images side by side
+        function three() {
+            for (i = 0; i < elements.length; i++) {
+                elements[i].style.msFlex = "33%"; // IE10
+                elements[i].style.flex = "33%";
+            }
+        }
+
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("myHeader");
+        var btns = header.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>

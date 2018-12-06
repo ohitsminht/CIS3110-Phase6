@@ -1,0 +1,142 @@
+body {
+  background-color: #1A1A1A;
+}
+h2 {
+  color: white;
+}
+.pctImg{
+width: 100%;
+height: auto;
+}
+.imgDiv{
+  width:30%
+  height:300px;
+  padding:5px; 
+}
+
+.title{
+   background-color: black;
+   overflow: hidden;
+   text-align: center;
+}
+
+
+.title p{
+   font-size: 24px;
+   color: white
+}
+
+.buttons{
+	display: block;
+    margin: 0 auto;
+}
+
+.heart{
+  width:30px;
+  height:30px;
+  display: block;
+  margin: 0 auto;
+}
+
+.row {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: 33% 33% 33%;
+  margin: auto;
+}
+
+.column{
+  background-color: grey;
+  color: black;
+  border-radius: 3px; //adjust
+  padding: 20px;
+  font-size: 90%; //adjust
+  margin: 3px;
+  border: 3px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+/*test*/
+
+.title a {
+  float: center;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+
+.row {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 5px;
+}
+
+/* Create two equal columns that sits next to each other */
+.holder {
+    -ms-flex: 33%; /* IE 10 */
+    flex: 33%;
+    padding: 0 4px;
+}
+
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+}
+
+/* Style the buttons */
+.btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #00abff;
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.btn.active {
+    background-color: #666;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Link CSS - *.imgDiv is required* */
+.imgDiv a:link {
+  text-decoration: none;
+  font-size: 35px;
+  color: black;
+}
+
+.imgDiv a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.imgDiv a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.imgDiv a:active {
+  text-decoration: underline;
+  color: blue;
+}
+
+.column {
+  width: 100%;
+  height: 90%;
+}

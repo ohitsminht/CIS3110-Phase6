@@ -1,0 +1,218 @@
+<!-- jquery used to set up a button, and establish a page via ready function -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+    <title>Acquire an image, via URL Params, then animate its display</title>
+    <link rel="stylesheet" href="navBar.css">
+    <link rel="stylesheet" href="go.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        //jq show feature on the image
+        //effect applies to the newly created div
+        $(function() { //shorthand for document when ready
+            //breakUpURLParameters(); //firtst things first, grab the url params and format the page
+            $("#u").click(function() {
+                //alert("testing this");
+                var h = "product.html"; //
+                console.log(h); //should be prior url visited, before here
+                window.location.href = h;
+            });
+            //url param handling
+            var url = window.location.href;
+            console.log("url = " + url);
+            var x = breakUpURLParameters(url);
+            console.log(x.search);
+            console.log("img url  = " + x.search.img); //please refer to http://www.w3schools.com/jsref/jsref_map.asp for example code
+            var t = document.getElementById("prayDiv"); //grab the div and use the following lines to attach the image to it
+
+            var a = document.createElement("aside");
+            a.setAttribute("class", "col-sm-5 border-right")
+
+            var b = document.createElement("aside");
+            b.setAttribute("class", "col-sm-7");
+
+            var y = document.createElement("img");
+            var h1 = document.createElement("h1");
+            var c = document.createElement("h2");
+            var p = document.createElement("p");
+            var h2 = document.createElement("h2");
+            var br = document.createElement("br");
+            var heartUrl = "https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase3/hearteyes.png";
+
+            y.setAttribute("src", x.search.img); // set up and assign img src
+            y.setAttribute("class", "pctImg"); //uses css class, be sure it's in the head area
+
+            var captionNode = document.createTextNode(decodeURI(x.search.caption));
+            var priceNode = document.createTextNode(decodeURI(x.search.price));
+            var descNode = document.createTextNode(decodeURI(x.search.desc));
+            var titleNode = document.createTextNode(decodeURI("Description: "));
+            
+
+            var status = document.createElement("button");
+            status.setAttribute("type", "button");
+            status.setAttribute("class", "btn btn-primary btn-lg btn-block");
+            status.setAttribute("data-toggle", "modal");
+            status.setAttribute("data-target", "#exampleModal")
+            var f = document.createElement("img");
+            var statusNode = document.createTextNode(decodeURI("Sold Out"));
+            status.appendChild(statusNode);
+
+
+            var fav = x.search.fav;
+            console.log("fav = " + fav);
+
+            h1.appendChild(captionNode);
+            c.appendChild(priceNode);
+            p.appendChild(descNode);
+            h2.appendChild(titleNode);
+
+            t.appendChild(a);
+            t.appendChild(b);
+            b.appendChild(h1);
+            a.appendChild(y);
+            b.appendChild(c);
+            b.appendChild(h2);
+            b.appendChild(p);
+            b.appendChild(status);
+            b.appendChild(br);
+
+            if (fav == "on") {
+                f.setAttribute("src", heartUrl);
+                f.setAttribute("class", "heart");
+                document.body.appendChild(f);
+            } else {
+                document.body.removeChild(f);
+            }
+
+            function breakUpURLParameters(url) { //analyze and output the url parameters as a useful array to caller
+                //  create a link in the DOM and set its href
+                var link = document.createElement('a');
+                link.setAttribute('href', url);
+                console.log("path variable is " + url);
+
+                //  return an easy-to-use object that breaks apart the path
+                return {
+                    host: link.hostname, //  'example.com'
+                    port: link.port, //  12345
+                    search: mapMaker(link.search), //  {startIndex: 1, pageSize: 10}
+                    path: link.pathname, //  '/blog/foo/bar'
+                    protocol: link.protocol //  'http:'
+                }
+            }
+
+            function mapMaker(search, preserveDuplicates) { //responsible for obtaining all url params, representing them into an array
+                //  option to preserve duplicate keys (e.g. 'sort=name&sort=age')
+                preserveDuplicates = preserveDuplicates || false; //  disabled by default
+
+                var outputNoDupes = {};
+                var returnableArray = []; //  optional output array to preserve duplicate keys
+
+                //  sanity check
+                if (!search) throw new Error('mapMaker: your search input param is misformed?');
+
+                //  remove ? character from your url (?foo=1&bar=2 -> 'foo=1&bar=2')
+                search = search.split('?')[1];
+
+                //  split apart your keys into a useful array of key/value pairs ('foo=1&bar=2' -> ['foo=1', 'bar=2'])
+                search = search.split('&');
+
+                //  separate keys from values (['foo=1', 'bar=2'] -> [{foo:1}, {bar:2}])
+                //  then package as an array for your caller to use as variables
+                returnableArray = search.map(function(keyval) {
+                    var out = {};
+                    keyval = keyval.split('=');
+                    out[keyval[0]] = keyval[1];
+                    outputNoDupes[keyval[0]] = keyval[1]; //  might as well do the no-dupe work too while we're in the loop
+                    return out;
+                });
+                return (preserveDuplicates) ? returnableArray : outputNoDupes;
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="https://s3-us-west-2.amazonaws.com/joshcis311/Phase6/HomePage.html">Cars</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase6/product.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://s3.us-east-2.amazonaws.com/cis311fall2018/Careers.html">Careers</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Information
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/cis311juarezgrover/group/AboutUs.html">About Us</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/cis311juarezgrover/group/PrivacyPolicy.html">Privacy Policy</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/fall2018cis3110/Phase6/FAQ.html">FAQ</a>
+                        <a class="dropdown-item" href="https://s3.us-east-2.amazonaws.com/cis311fall2018/ContactUs.html">Contact Us</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/joshcis311/Phase6/AboutUs.html">Terms of Use</a>
+                        <a class="dropdown-item" href="https://s3-us-west-2.amazonaws.com/cis311juarezgrover/group/Events.html">Events</a>
+                        <a class="dropdown-item" href="#">Sponsors</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="https://s3.us-east-2.amazonaws.com/cis311fall2018/SignUp.html"><i class="fas fa-user"></i> Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://s3-us-west-2.amazonaws.com/joshcis311/Phase6/LoginPage.html"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <div id="effectDiv" class="imgDiv">
+        <div id="testDiv" class="card">
+            <div id="prayDiv" class="row">
+                <!-- test -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">This item is currently sold out</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                We apologize for the inconvenience. This item is be restock in the near future. Thank you for your support.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end test -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
